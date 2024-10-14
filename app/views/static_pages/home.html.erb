@@ -1,0 +1,21 @@
+<div>
+  <h1 class="font-bold text-4xl">StaticPages#home</h1>
+  <% if user_signed_in? %>
+    <ul>
+      <% current_user.workspaces.each do |workspace| %>
+        <li>
+          <strong>Workspace ID:</strong>
+          <%= workspace.id %>
+          <br>
+          <strong>Is Shared:</strong>
+          <%= workspace.is_shared %>
+          <br>
+          <strong>Created At:</strong>
+          <%= workspace.created_at.strftime("%B %d, %Y") %>
+          <br>
+        </li>
+      <% end %></ul>
+  <% else %>
+    <p>You are not signed in yet</p>
+  <% end %>
+</div>
