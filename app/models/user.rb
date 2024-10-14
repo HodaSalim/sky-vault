@@ -13,6 +13,6 @@ class User < ApplicationRecord
   private
 
   def create_default_workspace
-    self.workspaces.create(is_shared: false, created_at: Time.current)
+    self.workspaces.create(is_shared: false, created_at: Time.current, name: self.name)
   end
 end
