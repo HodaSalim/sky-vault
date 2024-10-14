@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_13_230159) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_14_022902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,4 +27,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_13_230159) do
     t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  create_table "workspaces", force: :cascade do |t|
+    t.bigint "owner_id", null: false
+    t.boolean "is_shared"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["owner_id"], name: "index_workspaces_on_owner_id"
+  end
+
+  add_foreign_key "workspaces", "users", column: "owner_id"
 end
