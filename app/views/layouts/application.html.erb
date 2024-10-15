@@ -21,6 +21,9 @@
   <body>
     <%= render "layouts/header" %>
     <main class="md:container mx-auto mt-16 px-28">
+      <% if user_signed_in? %>
+        <%= render "layouts/sidebar" %>
+      <% end %>
       <%= yield %>
     </main>
     <div class="px-6 text-center mt-10 text-rose-700">
