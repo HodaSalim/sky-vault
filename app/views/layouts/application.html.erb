@@ -20,8 +20,11 @@
 
   <body>
     <%= render "layouts/header" %>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="md:container mx-auto mt-16 px-28">
       <%= yield %>
     </main>
+    <div class="px-6 text-center mt-10 text-rose-700">
+      <%= debug(params) if Rails.env.development? %>
+    </div>
   </body>
 </html>
